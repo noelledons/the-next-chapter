@@ -1,0 +1,32 @@
+@import "tailwindcss";
+
+@theme {
+  /* Our custom regal color palette */
+  --color-cream: #FDFBF7;
+  --color-cream-dark: #F3EFE6;
+  --color-navy: #1B263B;
+  --color-navy-dark: #0D1B2A;
+  --color-gold-light: #E5C07B;
+  --color-gold: #D4AF37;
+  --color-gold-dark: #AA8C2C;
+  --color-blush: #EED9D9;
+
+  /* Typography */
+  --font-serif: "Playfair Display", serif;
+  --font-sans: "Inter", sans-serif;
+}
+
+/* Applying our base styles using the theme variables */
+@layer base {
+  body {
+    background-color: var(--color-cream);
+    color: var(--color-navy);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-serif);
+    color: var(--color-navy);
+  }
+}
