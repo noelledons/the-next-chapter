@@ -2,6 +2,8 @@
 
 A React + Vite + TypeScript web application for structured life decision-making. This repository contains the frontend client for the product.
 
+Click here to [view](https://github.com/noelledons/the-next-chapter/deployments/github-pages)
+
 ---
 
 ## 🧭 Overview
