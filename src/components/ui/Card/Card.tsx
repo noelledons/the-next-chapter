@@ -1,22 +1,11 @@
 import React, { type HTMLAttributes } from 'react';
 
-// Extending standard div attributes so we can pass onClick, aria-labels, etc.
-interface CardProps extends HTMLAttributes<HTMLDivElement> {}
+type CardProps = HTMLAttributes<HTMLDivElement>;
 
-export const Card: React.FC<CardProps> = ({ 
-  className = '', 
-  children, 
-  ...props 
-}) => {
+export const Card: React.FC<CardProps> = ({ className = '', children, ...props }) => {
   return (
-    <div 
-      className={`
-        bg-white rounded-2xl border border-gold/20 
-        shadow-sm hover:shadow-md transition-shadow duration-300 
-        p-6 md:p-8 
-        flex flex-col
-        ${className}
-      `}
+    <div
+      className={`flex flex-col rounded-[1.5rem] border border-gold/20 bg-white/80 p-6 shadow-[0_18px_45px_-24px_rgba(51,40,43,0.3)] transition-all duration-300 md:p-8 ${className}`}
       {...props}
     >
       {children}
