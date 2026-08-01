@@ -18,37 +18,42 @@ export const TopicCard: React.FC<TopicCardProps> = ({
   onClick,
 }) => {
   return (
-    <Card 
-      className="h-full flex flex-col justify-between group cursor-pointer hover:border-gold/50"
+    <Card
+      className="focus-card group h-full cursor-pointer"
       onClick={onClick}
+      onKeyDown={(event) => {
+        if (event.key === 'Enter' || event.key === ' ') {
+          event.preventDefault();
+          onClick?.();
+        }
+      }}
       role="article"
+      tabIndex={0}
+      aria-label={`Explore ${title}`}
     >
-      <div>
-        {/* The icon container with a subtle hover scaling effect */}
-        <div className="text-gold mb-5 w-12 h-12 transform group-hover:scale-110 transition-transform duration-300">
-          {icon}
-        </div>
-        
-        <h3 className="text-xl font-bold mb-3">{title}</h3>
-        
-        <p className="text-navy/80 text-sm leading-relaxed mb-6">
-          {description}
-        </p>
+      <div className="flex items-start justify-between">
+        <div className="focus-icon transition-transform duration-300 group-hover:scale-110">{icon}</div>
+        <span className="rounded-full border border-gold/20 bg-white/70 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.25em] text-gold-dark">
+          Focus
+        </span>
       </div>
 
-      {/* mt-auto pushes the button to the bottom so all cards in a grid align perfectly */}
-      <div className="mt-auto">
-        <Button 
-          variant="outline" 
-          className="w-full text-sm py-2"
-          onClick={(e) => {
-            // Prevent the card's onClick from firing twice if they specifically click the button
-            e.stopPropagation();
-            if (onClick) onClick();
-          }}
-        >
-          {actionText}
-        </Button>
+      <div className="mt-6 flex flex-1 flex-col">
+        <h3 className="mb-3 text-xl font-semibold text-navy">{title}</h3>
+        <p className="mb-6 flex-1 text-sm leading-relaxed text-navy/80">{description}</p>
+
+        <div className="mt-auto">
+          <Button
+            variant="outline"
+            className="w-full py-2 text-sm"
+            onClick={(event) => {
+              event.stopPropagation();
+              onClick?.();
+            }}
+          >
+            {actionText}
+          </Button>
+        </div>
       </div>
     </Card>
   );
